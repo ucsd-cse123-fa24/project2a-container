@@ -7,23 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  linux_build:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            ghcr.io/ucsd-cse123-fa23/pa2a-container
-          # generate Docker tags based on the following events/attributes
-          tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -32,24 +22,10 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          platforms: 'linux/amd64,linux/arm64'
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-  
-  windows_build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Docker meta
-        id: meta
+        id: meta-linux
         uses: docker/metadata-action@v3
         with:
           # list of Docker images to use as base name for tags
@@ -57,18 +33,32 @@ jobs:
             ghcr.io/ucsd-cse123-fa23/pa2a-container
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=raw,value=windows
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            type=raw,value=latest,enable={{is_default_branch}}
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile.windows
+          target: linux
+          platforms: 'linux/amd64,linux/arm64'
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta-linux.outputs.tags }}
+          labels: ${{ steps.meta-linux.outputs.labels }}
+      - name: Docker meta
+        id: meta-windows
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            ghcr.io/ucsd-cse123-fa23/pa2a-container
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          target: windows
+          platforms: 'linux/amd64'
+          push: true
+          tags: ${{ steps.meta-windows.outputs.tags }}
+          labels: ${{ steps.meta-windows.outputs.labels }}
