@@ -43,6 +43,8 @@ jobs:
           push: true
           tags: ${{ steps.meta-linux.outputs.tags }}
           labels: ${{ steps.meta-linux.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Docker meta
         id: meta-windows
         uses: docker/metadata-action@v3
@@ -62,3 +64,5 @@ jobs:
           push: true
           tags: ${{ steps.meta-windows.outputs.tags }}
           labels: ${{ steps.meta-windows.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
