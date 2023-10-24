@@ -46,24 +46,24 @@ jobs:
           labels: ${{ steps.meta-linux.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      # - name: Docker meta
-      #   id: meta-windows
-      #   uses: docker/metadata-action@v3
-      #   with:
-      #     # list of Docker images to use as base name for tags
-      #     images: |
-      #       ghcr.io/ucsd-cse123-fa23/pa2a-container
-      #     # generate Docker tags based on the following events/attributes
-      #     tags: |
-      #       type=raw,value=windows,enable={{is_default_branch}}
-      # - name: Build and push
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     target: windows
-      #     platforms: 'linux/amd64'
-      #     push: true
-      #     tags: ${{ steps.meta-windows.outputs.tags }}
-      #     labels: ${{ steps.meta-windows.outputs.labels }}
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
+      - name: Docker meta
+        id: meta-windows
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            ghcr.io/ucsd-cse123-fa23/pa2a-container
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=raw,value=windows,enable={{is_default_branch}}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          target: windows
+          platforms: 'linux/amd64'
+          push: true
+          tags: ${{ steps.meta-windows.outputs.tags }}
+          labels: ${{ steps.meta-windows.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
