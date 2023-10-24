@@ -16,7 +16,7 @@ COPY project-base project-base
 FROM --platform=linux/amd64 ubuntu:18.04 as wsl-build
 RUN apt update && \
 	apt install -y build-essential flex bison libssl-dev libelf-dev git dwarves bc python3
-RUN git clone https://github.com/microsoft/WSL2-Linux-Kernel.git /wsl-kernel
+RUN git clone --depth 1 https://github.com/microsoft/WSL2-Linux-Kernel.git --branch linux-msft-wsl-5.15.y --single-branch /wsl-kernel
 COPY windows-configs/.config /wsl-kernel/.config
 RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) SUBDIRS=net/openvswitch modules
 
