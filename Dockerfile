@@ -18,10 +18,9 @@ RUN apt update && \
 	apt install -y build-essential flex bison libssl-dev libelf-dev git dwarves bc python3
 RUN git clone https://github.com/microsoft/WSL2-Linux-Kernel.git /wsl-kernel
 COPY windows-configs/.config /wsl-kernel/.config
-RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1)
-RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) modules
+RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) SUBDIRS=net/openvswitch modules
 
 
 FROM linux as windows
 COPY --from=wsl-build /wsl-kernel /wsl-kernel
-RUN make -C /wsl-kernel modules_install
+RUN make -C /wsl-kernel SUBDIRS=net/openvswitch modules_install && depmod -a
