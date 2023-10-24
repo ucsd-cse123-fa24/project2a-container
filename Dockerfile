@@ -23,4 +23,4 @@ RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) SUBDIRS=net/openvswitch
 
 FROM linux as windows
 COPY --from=wsl-build /wsl-kernel /wsl-kernel
-RUN make -C /wsl-kernel SUBDIRS=net/openvswitch modules_install && depmod -a
+RUN make -C /wsl-kernel SUBDIRS=net/openvswitch modules_install
