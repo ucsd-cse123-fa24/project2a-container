@@ -1,8 +1,8 @@
 FROM ubuntu:18.04 as linux
 RUN apt update && \
-	apt install -y openvswitch-switch mininet iproute2 \
+	apt install -y openvswitch-switch mininet iproute2 arping netcat \
                 curl inetutils-ping inetutils-traceroute \
-                build-essential git nano screen python python-pip sudo && \
+                build-essential gdb git nano screen python python-pip sudo && \
         pip install typing && \
         pip install mininet twisted ltprotocol
 RUN apt install -y python3 python3-pip && \
