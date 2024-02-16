@@ -21,9 +21,9 @@ https://askubuntu.com/questions/1455659/no-kernel-modules-showing-in-lib-modules
 docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/ucsd-cse123-fa23/pa2a:latest --target linux .
 
 # Windows build
-docker build -t ghcr.io/ucsd-cse123-wi24/project2a-container:windows --target windows .
+docker build -t ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
+docker buildx build --push --platform linux/amd64 --tag ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
 
-docker buildx build --push --platform linux/amd64 --tag ghcr.io/ucsd-cse123-wi24/pa2a-continer:windows --target windows .
 
 # Get kernel file for windows
 docker create --name kernel123 ghcr.io/ucsd-cse123-wi24/pa2a:windows && docker cp kernel123:/wsl-kernel/arch/x86/boot/bzImage C:\cse123pa2akernel & docker rm kernel123
