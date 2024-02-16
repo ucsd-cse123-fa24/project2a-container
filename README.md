@@ -22,6 +22,7 @@ docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/u
 
 # Windows build
 docker build -t ghcr.io/ucsd-cse123-wi24/project2a-container:windows --target windows .
+
 docker buildx build --push --platform linux/amd64 --tag ghcr.io/ucsd-cse123-wi24/pa2a-continer:windows --target windows .
 
 # Get kernel file for windows
