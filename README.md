@@ -20,7 +20,7 @@ https://askubuntu.com/questions/1455659/no-kernel-modules-showing-in-lib-modules
 # Multiarch build (Linux and macOS M1/M2)
 docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/ucsd-cse123-fa23/pa2a:latest --target linux .
 
-# Windows build
+# Windows build (You need to run this from WSL)
 docker build -t ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
 
 docker run -d -it "ghcr.io/ucsd-cse123-fa23/pa2a:windows" /bin/bash
