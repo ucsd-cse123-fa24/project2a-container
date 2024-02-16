@@ -3,7 +3,7 @@
 Clone by using either of the below commands:
 ```bash
 # Clone with submodules
-git clone --recurse-submodules <url>
+git clone --recurse-submodules https://github.com/ucsd-cse123-wi24/project2a-container.git
 # Update submodules after clone
 git clone https://github.com/ucsd-cse123-wi24/project2a-container.git
 git submodule update --init --recursive
