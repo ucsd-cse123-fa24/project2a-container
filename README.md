@@ -22,6 +22,7 @@ docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/u
 
 # Windows build
 docker build -t ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
+docker run -d -it "ghcr.io/ucsd-cse123-fa23/pa2a:windows" /bin/bash
 
 (DO NOT RUN THIS) docker buildx build --push --platform linux/amd64 --tag ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
 
