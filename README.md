@@ -13,19 +13,25 @@ git submodule update --init --recursive
 
 # Multiarch (Linux and macOS M1/M2)
 
+```bash
+# Create a volume for your docker container so your project directory will live when your container dies
 docker volume create cse123pa2_data
-
+# Build the docker container for the project
 docker build -t cse123pa2 --target linux .
-
+# Run the docker container for the project
 docker run --rm --privileged -it -v /lib/modules:/lib/modules -t cse123pa2
+```
 
 # Windows build (You need to run this from a WSL shell, not from Powershell)
 
+```bash
+# Create a volume for your docker container so your project directory will live when your container dies
 docker volume create cse123pa2_data
-
+# Build the docker container for the project
 docker build -t cse123pa2 --target windows .
-
+# Run the docker container for the project
 docker run -d -it -t cse123pa2
+```
 
 #(DO NOT RUN THIS) docker buildx build --push --platform linux/amd64 --tag ghcr.io/ucsd-cse123-fa23/pa2a:windows --target windows .
 
