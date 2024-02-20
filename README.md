@@ -33,6 +33,7 @@ docker exec -it pa2 bash
 
 ### Windows (WSL Ubuntu shell)
 
+Ubuntu Shell:
 ```bash
 # Create a volume for your docker container so your project directory will live when your container dies
 docker volume create cse123pa2_data
@@ -43,6 +44,21 @@ docker build -t cse123pa2 --target windows .
 docker run -d --rm --privileged -it --name pa2 -v cse123pa2_data:/project-base -t cse123pa2
 # Copy the new kernel out of the docker image into WSL
 docker cp pa2:/wsl-kernel/vmlinux /tmp/vmlinux
+```
+
+Powershell:
+```bash
+# Switch to your windows home directory
+cd ~
+# Copy the kernel image out of WSL into your Windows home directory
+wsl cp /tmp/vmlinux cse123pa2-kernel
+# Launch notepad to edit your wsl config file
+notepad .wslconfig
+```
+In your .wslconfig write the following text in notepad and save it:
+```
+[wsl]
+kernel=C:\\Users\\YourUserName\\cse123pa2-kernel
 ```
 
 ```bash
