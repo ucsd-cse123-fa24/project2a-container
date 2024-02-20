@@ -23,5 +23,7 @@ RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) modules
 
 FROM linux as windows
 COPY --from=wsl-build /wsl-kernel /wsl-kernel
+VOLUME /project-base
+WORKDIR /project-base
 RUN make -C /wsl-kernel modules_install
 CMD /project-base/boot.sh && bash
