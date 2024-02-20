@@ -56,16 +56,20 @@ wsl cp /tmp/vmlinux /mnt/c/cse123pa2-kernel
 # Launch notepad to edit your wsl config file
 notepad .wslconfig
 ```
+
 In your .wslconfig write the following text save it in notepad (replace YourUserName with your actual windows user name):
 ```
 [wsl]
 kernel=C:\\Users\\YourUserName\\cse123pa2-kernel
 ```
-Back in powershell, shut down wsl (Docker will crash and force a restart of wsl if you have it running)
+
+Powershell:
 ```
+# Shut down wsl (Docker will crash and force a restart of wsl if you have it running)
 wsl --shutdown
 ```
 
+Ubuntu Shell:
 ```bash
 # To open a shell inside the running container, in each terminal run the following:
 docker exec -it pa2 bash
