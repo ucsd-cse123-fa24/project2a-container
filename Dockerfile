@@ -20,8 +20,10 @@ RUN apt update && \
 RUN git clone --depth 1 https://github.com/microsoft/WSL2-Linux-Kernel.git --branch linux-msft-wsl-5.15.y --single-branch /wsl-kernel
 COPY windows-configs/.config /wsl-kernel/.config
 RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) SUBDIRS=net/openvswitch modules
+CMD /project-base/boot.sh && bash
 
 
 FROM linux as windows
 COPY --from=wsl-build /wsl-kernel /wsl-kernel
 RUN make -C /wsl-kernel SUBDIRS=net/openvswitch modules_install
+CMD /project-base/boot.sh && bash
