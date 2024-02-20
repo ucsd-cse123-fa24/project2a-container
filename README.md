@@ -26,12 +26,13 @@ docker build -t cse123pa2 --target linux .
 # You should be able to attach to the running container in VSCode after this is executed.
 docker run -d --rm --privileged -it --name pa2 -v /lib/modules:/lib/modules -v cse123pa2_data:/project-base -t cse123pa2
 # You can now clone the github repo into your proejct from inside the bash shell
-
+```
+```bash
 # To open a shell inside the running container, in each terminal run the following:
 docker exec -it pa2 bash
 ```
 
-### Windows (WSL Ubuntu shell)
+### Windows (Ubuntu shell)
 
 Ubuntu Shell:
 ```bash
@@ -59,6 +60,10 @@ In your .wslconfig write the following text save it in notepad (replace YourUser
 ```
 [wsl]
 kernel=C:\\Users\\YourUserName\\cse123pa2-kernel
+```
+Back in powershell, shut down wsl (Docker will crash and force a restart of wsl if you have it running)
+```
+wsl --shutdown
 ```
 
 ```bash
