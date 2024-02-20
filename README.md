@@ -78,6 +78,9 @@ docker run -d --rm --privileged -it --name pa2 -v cse123pa2_data:/project-base -
 
 # To open a shell inside the running container, in each terminal run the following (or attach to the running container using VSCode):
 docker exec -it pa2 bash
-# You can now clone the github repo into your project from inside the Docker container's bash shell
+# Inside the container you may need to switch to the /project-base folder
+root@docker$ cd /project-base
+
+# You can now clone the github repo into your project from inside the Docker container's bash shell and run the rest of the commands!
 ```
 
