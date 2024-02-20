@@ -25,7 +25,7 @@ docker build -t cse123pa2 --target linux .
 # Run the docker container for the project. Run this each time you work on the project.
 # You should be able to attach to the running container in VSCode after this is executed.
 docker run --rm --privileged -it -v /lib/modules:/lib/modules -t cse123pa2
-# You can now clone the 
+# You can now clone the github repo into your proejct from inside the bash shell
 
 # To add more shells in other terminals from the running container, in each terminal run the following:
 docker exec -it cse123pa2 bash
@@ -35,12 +35,12 @@ docker exec -it cse123pa2 bash
 
 ```bash
 # Create a volume for your docker container so your project directory will live when your container dies
-sudo docker volume create cse123pa2_data
+docker volume create cse123pa2_data
 # Build the docker container for the project
-sudo docker build -t cse123pa2 --target windows .
+docker build -t cse123pa2 --target windows .
 # Run the docker container for the project. Run this each time you work on the project.
 # You should be able to attach to the running container in VSCode after this is executed.
-docker run -d -it -t cse123pa2
+docker run --rm --privileged -it -t cse123pa2
 
 # To add more shells in other terminals from the running container, in each terminal run the following:
 docker exec -it cse123pa2 bash
