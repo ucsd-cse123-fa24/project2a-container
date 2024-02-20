@@ -71,7 +71,10 @@ wsl --shutdown
 
 Ubuntu Shell:
 ```bash
-# To open a shell inside the running container, in each terminal run the following:
+# Run the docker container again
+docker run -d --rm --privileged -it --name pa2 -v cse123pa2_data:/project-base -t cse123pa2
+
+# To open a shell inside the running container, in each terminal run the following (or attach to the running container using VSCode):
 docker exec -it pa2 bash
 ```
 
