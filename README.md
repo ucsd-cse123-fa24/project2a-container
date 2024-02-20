@@ -61,7 +61,7 @@ notepad .wslconfig
 
 In your .wslconfig write the following text save it in notepad (replace YourUserName with your actual windows user name):
 ```
-[wsl]
+[wsl2]
 kernel=C:\\Users\\YourUserName\\cse123pa2-kernel
 ```
 
