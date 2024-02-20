@@ -12,7 +12,7 @@ RUN apt install -y python3 python3-pip && \
 VOLUME /project-base
 WORKDIR /project-base
 COPY project-base /project-base
-CMD /project-base/boot.sh
+CMD /project-base/boot.sh && bash
 
 FROM --platform=linux/amd64 ubuntu:18.04 as wsl-build
 RUN apt update && \
@@ -24,4 +24,4 @@ RUN yes "" | make -C /wsl-kernel -j $(expr $(nproc) - 1) modules
 FROM linux as windows
 COPY --from=wsl-build /wsl-kernel /wsl-kernel
 RUN make -C /wsl-kernel modules_install
-CMD /project-base/boot.sh
+CMD /project-base/boot.sh && bash
