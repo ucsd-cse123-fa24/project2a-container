@@ -32,7 +32,7 @@ docker exec -it pa2 bash
 # You can now clone the github repo into your project from inside the Docker container's bash shell
 ```
 
-### Windows (Ubuntu shell)
+### Windows (You need to use both Ubuntu shell and Powershell)
 
 Ubuntu Shell:
 ```bash
