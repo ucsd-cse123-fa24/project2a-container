@@ -9,9 +9,9 @@ RUN apt install -y python3 python3-pip && \
         pip3 install -U pip && \
 	pip3 install -U cryptography && \
         pip3 install mininet pexpect scapy
-
 VOLUME /project-base
 WORKDIR /project-base
+COPY project-base /project-base
 CMD /project-base/boot.sh && bash
 
 FROM --platform=linux/amd64 ubuntu:18.04 as wsl-build
