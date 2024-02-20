@@ -52,7 +52,7 @@ Powershell:
 # Switch to your windows home directory
 cd ~
 # Copy the kernel image out of WSL into your Windows home directory
-wsl cp /tmp/vmlinux /mnt/c/cse123pa2-kernel
+wsl cp /tmp/vmlinux cse123pa2-kernel
 # Launch notepad to edit your wsl config file
 notepad .wslconfig
 ```
