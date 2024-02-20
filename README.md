@@ -35,6 +35,8 @@ docker exec -it pa2 bash
 ### Windows (You need to use both Ubuntu shell and Powershell)
 
 Ubuntu Shell:
+
+#### For Ubuntu Shell user, make sure inside the Docker Desktop -> Settings -> Resource -> WSL Integration, your "ubuntu" button is on.
 ```bash
 # Create a volume for your docker container so your project directory will live when your container dies
 docker volume create cse123pa2_data
