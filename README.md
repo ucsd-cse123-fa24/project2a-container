@@ -10,6 +10,7 @@ git clone --recurse-submodules https://github.com/ucsd-cse123-wi24/project2a-con
 
 # Or, clone and update submodules after clone
 git clone https://github.com/ucsd-cse123-wi24/project2a-container.git
+cd project2a-container/
 git submodule update --init --recursive
 ```
 
