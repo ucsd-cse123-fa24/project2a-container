@@ -6,10 +6,10 @@
 
 ```bash
 # Clone with submodules
-git clone --recurse-submodules https://github.com/ucsd-cse123-wi24/project2a-container.git
+git clone --recurse-submodules https://github.com/ucsd-cse123-fa24/project2a-container.git
 
 # Or, clone and update submodules after clone
-git clone https://github.com/ucsd-cse123-wi24/project2a-container.git
+git clone https://github.com/ucsd-cse123-fa24/project2a-container.git
 cd project2a-container/
 git submodule update --init --recursive
 ```
