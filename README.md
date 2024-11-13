@@ -56,6 +56,11 @@ wsl --set-default Ubuntu
 
 Ubuntu Shell:
 
+If you do not already have an Ubuntu shell running, you can start one with:
+```bash
+wsl
+```
+
 #### For Ubuntu Shell user, make sure inside the Docker Desktop -> Settings -> Resource -> WSL Integration, your "ubuntu" button is on.
 ```bash
 # Create a volume for your docker container so your project directory will live when your container dies
