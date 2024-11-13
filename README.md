@@ -33,7 +33,14 @@ docker exec -it pa2 bash
 # You can now clone the github repo into your project from inside the Docker container's bash shell
 ```
 
-### Windows (You need to use both Ubuntu shell and Powershell)
+### Windows 
+
+#### You need to use both Ubuntu shell and Powershell
+
+This project requres WSL with the Ubuntu distribution.  You can check if you already have that installed by typing;
+```bash
+wsl -l
+```
 
 Ubuntu Shell:
 
