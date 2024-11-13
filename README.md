@@ -42,6 +42,18 @@ This project requres WSL with the Ubuntu distribution.  You can check if you alr
 wsl -l
 ```
 
+You should see 
+```bash
+Windows Subsystem for Linux Distributions:
+Ubuntu (Default)
+```
+
+If you see something else, you will need to (re)install WSL with the Ubuntu distribution using the following commands:
+```bash
+wsl --install
+wsl --set-default Ubuntu
+```
+
 Ubuntu Shell:
 
 #### For Ubuntu Shell user, make sure inside the Docker Desktop -> Settings -> Resource -> WSL Integration, your "ubuntu" button is on.
